@@ -53,7 +53,10 @@ public class DataPathSystem {
       wantedDirName = args[0];
     }
 
-    DataPath path = getLocalSystem().getLocalDataPath(wantedDirName);
-    System.out.println(path);
+    DataPath localDataPath = getLocalSystem().getLocalDataPath(wantedDirName);
+    System.out.println("Local data path: " + localDataPath);
+
+    DataPath profilePath = getLocalSystem().getUserProfilePath();
+    System.out.println("Profile path: " + profilePath);
   }
 }

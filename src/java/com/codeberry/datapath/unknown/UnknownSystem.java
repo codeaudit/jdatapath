@@ -9,4 +9,8 @@ public class UnknownSystem implements LocalDataPathSystem {
     String userHome = System.getProperty("user.home");
     return new DataPath(userHome + DataPathSystem.getFileSeparator() + "." + wantedDataDirName, false);
   }
+
+  public DataPath getUserProfilePath() {
+    return new DataPath(System.getProperty("user.home"), false);
+  }
 }
