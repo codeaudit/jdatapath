@@ -2,19 +2,19 @@ package com.codeberry.datapath;
 
 public class DataPath {
   private final String path;
-  private final boolean osSupported;
+  private final boolean supportedByOs;
 
-  public DataPath(String path, boolean osSupported) {
+  public DataPath(String path, boolean supportedByOs) {
     this.path = path;
-    this.osSupported = osSupported;
+    this.supportedByOs = supportedByOs;
   }
 
   public String getPath() {
     return path;
   }
 
-  public boolean isOsSupported() {
-    return osSupported;
+  public boolean isSupportedByOs() {
+    return supportedByOs;
   }
 
   @Override
@@ -28,7 +28,7 @@ public class DataPath {
 
     DataPath dataPath = (DataPath) o;
 
-    if (osSupported != dataPath.osSupported) {
+    if (supportedByOs != dataPath.supportedByOs) {
       return false;
     }
     if (path != null ? !path.equals(dataPath.path) : dataPath.path != null) {
@@ -41,7 +41,7 @@ public class DataPath {
   @Override
   public int hashCode() {
     int result = path != null ? path.hashCode() : 0;
-    result = 31 * result + (osSupported ? 1 : 0);
+    result = 31 * result + (supportedByOs ? 1 : 0);
     return result;
   }
 
@@ -49,7 +49,7 @@ public class DataPath {
   public String toString() {
     return "DataPath{" +
            "path='" + path + '\'' +
-           ", osSupported=" + osSupported +
+           ", supportedByOs=" + supportedByOs +
            '}';
   }
 }
