@@ -47,7 +47,7 @@ public class DataPathSystem {
   }
 
   public static void main(String[] args) {
-    String wantedDirName = "";
+    String wantedDirName = "<please input wanted dir>";
 
     if (args.length > 0) {
       wantedDirName = args[0];
