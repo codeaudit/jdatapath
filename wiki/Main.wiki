@@ -1,0 +1,28 @@
+#labels Featured,Phase-Requirements,Phase-Deploy,Phase-Design
+= Tutorial =
+JDataPath will let you query location of different types of special path. Currently, only "local data path" is supported, ideal for storing your application data. It may be extended with "video path", "music path" etc.
+
+Only Windows have a special implementation (through native code). Other implementations are welcome :)
+
+== Install ==
+* Set native lib path system property. 
+* Include the jar in your classpath.
+
+For example, on windows OSes, start java with this argument:
+{{{
+java -Djava.library.path=lib/native/windows -cp lib/datapath.jar ...
+}}}
+
+Of course, the target path must contain the native library for your OS.
+
+== Code Usage ==
+
+Using JDataPath is simple. Here is an example:
+
+{{{
+DataPath path = DataPathSystem.getLocalSystem().getLocalDataPath(wantedDirName);
+System.out.println("My local path: " + path.getPath());
+System.out.println("Is path specially supported by OS: " + path.isSupportedByOs());
+}}}
+
+The returned path object will tell if the requested type of path is supported by the OS. The client code can take special actions if the path is not OS supported.
