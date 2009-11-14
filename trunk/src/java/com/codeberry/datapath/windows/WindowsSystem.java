@@ -30,4 +30,8 @@ public class WindowsSystem implements LocalDataPathSystem {
     String mainPath = getPath(CCIDL.CSIDL_LOCAL_APPDATA);
     return new DataPath(mainPath + DataPathSystem.getFileSeparator() + wantedDataDirName, true);
   }
+
+  public DataPath getUserProfilePath() {
+    return new DataPath(getPath(CCIDL.CSIDL_PROFILE), true);
+  }
 }
