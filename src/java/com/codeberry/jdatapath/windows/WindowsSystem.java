@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.codeberry.datapath.windows;
+package com.codeberry.jdatapath.windows;
 
-import com.codeberry.datapath.DataPath;
-import com.codeberry.datapath.DataPathSystem;
-import com.codeberry.datapath.LocalDataPathSystem;
+import com.codeberry.jdatapath.DataPath;
+import com.codeberry.jdatapath.JDataPathSystem;
+import com.codeberry.jdatapath.LocalDataPathSystem;
 
 public class WindowsSystem implements LocalDataPathSystem {
   private static final Object INIT_LOCK = new Object();
@@ -33,7 +33,7 @@ public class WindowsSystem implements LocalDataPathSystem {
   public WindowsSystem() {
     synchronized (INIT_LOCK) {
       if (!initialized) {
-        System.loadLibrary("datapath");
+        System.loadLibrary("jdatapath");
         initialized = true;
       }
     }
@@ -41,7 +41,7 @@ public class WindowsSystem implements LocalDataPathSystem {
 
   public DataPath getLocalDataPath(String wantedDataDirName) {
     String mainPath = getPath(CCIDL.CSIDL_LOCAL_APPDATA);
-    return new DataPath(mainPath + DataPathSystem.getFileSeparator() + wantedDataDirName, true);
+    return new DataPath(mainPath + JDataPathSystem.getFileSeparator() + wantedDataDirName, true);
   }
 
   public DataPath getUserProfilePath() {

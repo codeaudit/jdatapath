@@ -1,7 +1,7 @@
 #include <shlobj.h>
-#include "com_codeberry_datapath_windows_WindowsSystem.h"
+#include "com_codeberry_jdatapath_windows_WindowsSystem.h"
 
-JNIEXPORT jstring JNICALL Java_com_codeberry_datapath_windows_WindowsSystem_SHGetPathFromIDList(JNIEnv *env, jclass jcls, jint csidl) {
+JNIEXPORT jstring JNICALL Java_com_codeberry_jdatapath_windows_WindowsSystem_SHGetPathFromIDList(JNIEnv *env, jclass jcls, jint csidl) {
   // Credit: Copied from "http://justcheckingonall.wordpress.com/2008/05/16/find-shell-folders-win32/" :)
 
 	// Allocate a pointer to an Item ID list

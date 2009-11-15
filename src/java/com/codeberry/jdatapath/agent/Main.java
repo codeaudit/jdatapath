@@ -14,19 +14,28 @@
  * limitations under the License.
  */
 
-package com.codeberry.jdatapath.unknown;
+package com.codeberry.jdatapath.agent;
 
 import com.codeberry.jdatapath.DataPath;
 import com.codeberry.jdatapath.JDataPathSystem;
-import com.codeberry.jdatapath.LocalDataPathSystem;
 
-public class UnknownSystem implements LocalDataPathSystem {
-  public DataPath getLocalDataPath(String wantedDataDirName) {
+import java.lang.instrument.Instrumentation;
+
+public class Main {
+  public static void premain(String agentArguments, Instrumentation instrumentation) {
+    DataPath path = JDataPathSystem.getLocalSystem().getUserProfilePath();
+
     String userHome = System.getProperty("user.home");
-    return new DataPath(userHome + JDataPathSystem.getFileSeparator() + "." + wantedDataDirName, false);
-  }
-
-  public DataPath getUserProfilePath() {
-    return new DataPath(System.getProperty("user.home"), false);
+    try {
+      if (userHome.equals(path.getPath())) {
+        System.err.println("*** JDataPath: Not Assigned 'user.home' (as expected): " + path.getPath());
+      } else {
+        System.setProperty("user.home", path.getPath());
+        System.err.println("*** JDataPath: OK Assigned 'user.home': " + path.getPath());
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.err.println("*** JDataPath: Failed Assigned 'user.home': " + path.getPath());
+    }
   }
 }
