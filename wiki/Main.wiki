@@ -1,5 +1,5 @@
 #labels Featured,Phase-Requirements,Phase-Deploy,Phase-Design
-= Tutorial =
+= How To =
 JDataPath will let you query special paths that the OS may support. Supported path types:
   * local data, ideal for storing your application data
   * profile
@@ -18,6 +18,20 @@ java -Djava.library.path=lib/native/windows -cp lib/jdatapath.jar ...
 }}}
 
 Of course, the target path must contain the native library for your OS.
+
+== Java Agent Usage (fix 'user.home') ==
+
+Start your java application with these vm params:
+  * -Djava.library.path=<path to native libs>
+  * -javaagent:<path to jdatapath.jar>
+
+For example:
+{{{
+java -javaagent:lib/jdatapath.jar -Djava.library.path=lib/native/windows -cp lib/myapp.jar MyAppMain
+}}}
+
+JDataPath will output to the console (System.err) about the fix result. For example:
+ JDataPath: OK Assigned 'user.home': C:\Users\MyUser
 
 == Code Usage ==
 
