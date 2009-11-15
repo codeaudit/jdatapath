@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeberry.datapath;
+package com.codeberry.jdatapath;
 
 public class DataPath {
   private final String path;

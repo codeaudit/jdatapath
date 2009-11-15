@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeberry.datapath;
+package com.codeberry.jdatapath;
 
 public interface LocalDataPathSystem {
   DataPath getLocalDataPath(String wantedDataDirName);

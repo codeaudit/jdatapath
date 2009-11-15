@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeberry.datapath.windows;
+package com.codeberry.jdatapath.windows;
 
 public enum CCIDL {
   CSIDL_DESKTOP                   (0x0000),        // <desktop>
